@@ -20,3 +20,16 @@ for file in $FILES; do
   fi
 done
 
+if [ ! -e ~/.ssh ]; then
+  mkdir ~/.ssh
+  chmod 700 ~/.ssh
+  ln -s $SCRIPT_DIR/config ~/.ssh/config 
+  mkdir -p ~/.ssh/keys/github
+
+  pushd ~/.ssh/keys/github
+  touch id_rsa
+  chmod 600 id_rsa
+  touch id_rsa.pub
+  chmod 644 id_rsa.pub
+  popd
+fi
