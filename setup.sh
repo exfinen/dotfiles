@@ -10,13 +10,10 @@ for file in $FILES; do
   [ "$file" = '.git' ] && continue
 
   SYMLINK=~/$file
-  echo -n "Symlinking '$file' to '$SYMLINK'... "
 
   if [ ! -e $SYMLINK ]; then
     ln -s $SCRIPT_DIR/$file $SYMLINK
-    echo "done."
-  else
-    echo "already exists."
+    echo -n "Symlinked '$file' to '$SYMLINK'... "
   fi
 done
 
@@ -27,6 +24,7 @@ fi
 
 if [ ! -e ~/.ssh/config ]; then
   ln -s $SCRIPT_DIR/config ~/.ssh/config 
+  echo "Symlinked .ssh/config to '$SCRIPT_DIR/config'"
 fi
 
 if [ ! -e ~/.ssh/keys/github ]; then
@@ -38,5 +36,6 @@ if [ ! -e ~/.ssh/keys/github ]; then
   touch id_rsa.pub
   chmod 644 id_rsa.pub
   popd
+  echo "Created github key entries"
 fi
 
