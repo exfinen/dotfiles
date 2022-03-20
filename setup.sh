@@ -23,7 +23,13 @@ done
 if [ ! -e ~/.ssh ]; then
   mkdir ~/.ssh
   chmod 700 ~/.ssh
+fi
+
+if [ ! -e ~/.ssh/config ]; then
   ln -s $SCRIPT_DIR/config ~/.ssh/config 
+fi
+
+if [ ! -e ~/.ssh/keys/github ]; then
   mkdir -p ~/.ssh/keys/github
 
   pushd ~/.ssh/keys/github
@@ -33,3 +39,4 @@ if [ ! -e ~/.ssh ]; then
   chmod 644 id_rsa.pub
   popd
 fi
+
