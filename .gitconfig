@@ -3,3 +3,5 @@
 	name = Kazumune Masaki
 [init]
 	defaultBranch = main
+[core]
+	editor = vi
